@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import AuthContext from '../../context/AuthContext';
 
 const Navbar = () => {
+    const { user, signOutUser } = useContext(AuthContext)
+
+    const handleSignOut= ()=>{
+        signOutUser()
+        .then(()=>{
+            console.log('signOut')
+        })
+        .catch(err=>{
+            console.log(err.message)
+        })
+    }
 
     const links = <>
-    <li><a>item1</a></li>
-    <li><a>item1</a></li>
+        <li><a>item1</a></li>
+        <li><a>item1</a></li>
     </>
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -17,19 +29,29 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-                         {links}
+                        {links}
                     </ul>
                 </div>
                 <a className="btn btn-ghost text-xl">daisyUI</a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                  {links}
+                    {links}
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to={'/register'}>Register</Link>
-                <a className="btn">Sign In</a>
+                {
+                    user ? <>
+                    <button onClick={handleSignOut} className="btn">Sign Out</button>
+                    </> :
+                        <>
+                            <Link to={'/register'}>Register</Link>
+                            <Link to={'/signIn'}>
+                                <button className='btn ml-3'>Sign in</button>
+                            </Link>
+                        </>
+                }
+
             </div>
         </div>
     );
