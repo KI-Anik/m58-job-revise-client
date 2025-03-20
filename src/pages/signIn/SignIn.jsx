@@ -3,6 +3,7 @@ import signInLottieData from '../../assets/lottie/login.json'
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext';
 import { useLocation, useNavigate } from 'react-router-dom';
+import SocialLogin from '../shared/SocialLogin';
 
 const SignIn = () => {
     const {signInUser}= useContext(AuthContext)
@@ -43,10 +44,10 @@ const SignIn = () => {
                             <button className="btn btn-neutral mt-4">Log in</button>
                         </fieldset>
                     </form>
+                <SocialLogin></SocialLogin>
                 </div>
-
                 <div className="text-center lg:text-left w-96">
-                   <Lottie  animationData={signInLottieData}></Lottie>
+                   <Lottie animationData={signInLottieData}></Lottie>
                 </div>
             </div>
         </div>
