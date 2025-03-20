@@ -2,19 +2,25 @@ import React, { useContext } from 'react';
 import signInLottieData from '../../assets/lottie/login.json'
 import Lottie from 'lottie-react';
 import AuthContext from '../../context/AuthContext';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
-
     const {signInUser}= useContext(AuthContext)
+    const location =useLocation()
+    console.log('sign in', location)
+    const navigate = useNavigate()
+
     const handleSignIn=e=>{
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const from = location?.state || '/'
 
         signInUser(email,password)
         .then(res=>{
             console.log(res.user)
+            navigate(from)
         })
         .catch(err=>{
             console.log(err.message)
