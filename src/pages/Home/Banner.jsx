@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from "motion/react"
 import { easeOut } from 'motion';
 import team1 from '../../assets/team/team1.jpg'

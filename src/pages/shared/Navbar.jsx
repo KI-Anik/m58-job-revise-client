@@ -34,9 +34,9 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl ">
-                    <img className='w-16' src={logo} alt="" />
-                    <h3 className='text-3xl'>Job Revise</h3>
+                <a className="btn btn-ghost  ">
+                    <img className='w-16 hidden lg:block' src={logo} alt="" />
+                    <h3 className='md:text-3xl'>Job Revise</h3>
                 </a>
             </div>
             <div className="navbar-center hidden lg:flex">
